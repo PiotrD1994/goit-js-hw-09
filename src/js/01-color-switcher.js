@@ -6,7 +6,7 @@ function getRandomHexColor() {
   const stopButton = document.querySelector('[data-stop]')
   const body = document.body
 
-  let backgroundColorId = null
+  let currentBackgroundColor = null
 
   startButton.addEventListener('click', startColor)
   stopButton.addEventListener('click', stopColor)
@@ -14,7 +14,7 @@ function getRandomHexColor() {
   function startColor() {
     startButton.disabled = true
     stopButton.disabled = false
-    backgroundColorId = setInterval (() => {
+    currentBackgroundColor = setInterval (() => {
     const randomColor = getRandomHexColor()
     body.style.backgroundColor = randomColor}, 1000)
   }
@@ -22,5 +22,5 @@ function getRandomHexColor() {
 function stopColor() {
     startButton.disabled = false
     stopButton.disabled = true
-    clearInterval(backgroundColorId)
+    clearInterval(currentBackgroundColor)
 }
