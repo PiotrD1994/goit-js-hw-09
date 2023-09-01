@@ -67,22 +67,26 @@ function handleclick() {
     input.disabled = true
     intervalId = setInterval(updateCountdown, 1000)
     function updateCountdown() {
-        const chosenDate = new Date(input.value)
-        const currentDate = new Date()
-        const timeDifference = chosenDate - currentDate
-        const {days, hours, minutes, seconds} = convertMs(timeDifference)
-        daysCount.textContent = addLeadingZero(days)
-        hoursCount.textContent = addLeadingZero(hours)
-        minutesCount.textContent = addLeadingZero(minutes)
-        secondsCount.textContent = addLeadingZero(seconds)
-        if (timeDifference <= 0) {
-            clearInterval(intervalId)
-            startButton.disabled = true
-            return;
-        } else {
-            startButton.disabled = false
-        }
-    }
+   const chosenDate = new Date(input.value)
+   const currentDate = new Date()
+   const timeDifference = chosenDate - currentDate
+   if(timeDifference <= 0) {
+    clearInterval(intervalId)
+    startButton.disabled = true
+    daysCount.textContent = '00'
+    hoursCount.textContent = '00'
+    minutesCount.textContent = '00'
+    secondsCount.textContent = '00'
+    return
+   }
+   const {days, hours, minutes, seconds} = convertMs(timeDifference)
+   daysCount.textContent = addLeadingZero(days)
+   hoursCount.textContent = addLeadingZero(hours)
+   minutesCount.textContent = addLeadingZero(minutes)
+   secondsCount.textContent = addLeadingZero(seconds)
+   startButton.disabled = false
+
+}
 }
 function addLeadingZero(value) {
     return value.toString().padStart(2,'0')

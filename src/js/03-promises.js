@@ -21,7 +21,7 @@ submitButton.addEventListener('click', handleClick)
 
 function handleClick(event) {
   event.preventDefault()
-  let delay = parseInt(delayInput)
+  let delay = parseInt(delayInput.value)
   let step = parseInt(stepInput.value)
   let amount = parseInt(amountInput.value)
   for (let i = 0; i < amount; i += 1) {
